@@ -1,12 +1,15 @@
 #pragma once
+#include <vector>
+#include <string>
 
 class Checkers {
     private:
-        char m_board[8][8], m_xChar, m_oChar;
+        std::vector<std::string> m_board;
+        char m_xChar, m_oChar;
     public:
         Checkers();
         void startGame();
-        char generateBoard();
+        void generateBoard();
         void movePiece(int move);
         bool isWinnder(char p);
         void printBoard();

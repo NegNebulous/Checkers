@@ -1,28 +1,67 @@
-#include <checkers.h>
+#include "checkers.h"
 #include <iostream>
+#include <vector>
+#include <string>
 
 Checkers::Checkers() {
-    char m_board[8][8];
-    char m_xChar;
-    char m_oChar;
+    m_board;
+    m_xChar = 'x';
+    m_oChar = 'o';
 }
 
-void startGame() {
+void Checkers::startGame() {
+    generateBoard();
+    printBoard();
+}
+
+void Checkers::generateBoard() {
+    //8x8 board
+    for (int i = 0; i <= 2; i++) {
+        std::string row = "";
+        for (int j = 0; j < 8; j++) {
+            if (j %  2) {
+                row += m_xChar;
+            }
+            else {
+                row += ' ';
+            }
+        }
+        if (!(i % 2)) {
+            row = row.substr(1, row.length() - 1) + ' ';
+        }
+        m_board.emplace_back(row);
+    }
+
+    m_board.emplace_back("        ");
+    m_board.emplace_back("        ");
+
+    for (int i = 5; i <= 7; i++) {
+        std::string row = "";
+        for (int j = 0; j < 8; j++) {
+            if (j %  2) {
+                row += m_oChar;
+            }
+            else {
+                row += ' ';
+            }
+        }
+        if (!(i % 2)) {
+            row = row.substr(1, row.length() - 1) + ' ';
+        }
+        m_board.emplace_back(row);
+    }
+}
+
+void Checkers::movePiece(int move) {
 
 }
 
-char generateBoard() {
-
+bool Checkers::isWinnder(char p) {
+    return NULL;
 }
 
-void movePiece(int move) {
-
-}
-
-bool isWinnder(char p) {
-
-}
-
-void printBoard() {
-    
+void Checkers::printBoard() {
+    for (int i = 0; i < m_board.size(); i++) {
+        std::cout << m_board[i] << std::endl;
+    }
 }
